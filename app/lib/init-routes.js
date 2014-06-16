@@ -99,6 +99,23 @@ function load(app, fn){
 			failureRedirect : '/'
 		}));
 
+    /* end facebook route */
+
+  	// =====================================
+	// TWITTER ROUTES ======================
+	// =====================================
+	// route for twitter authentication and login
+	app.get('/auth/twitter', passport.authenticate('twitter'));
+
+	// handle the callback after twitter has authenticated the user
+	app.get('/auth/twitter/callback',
+		passport.authenticate('twitter', {
+			successRedirect : '/profile',
+			failureRedirect : '/'
+		}));
+
+    /* end twitter route */
+
   // =====================================
  // LOGOUT ==============================
  // =====================================
@@ -107,7 +124,7 @@ function load(app, fn){
 		res.redirect('/');
 	});
 
-  /* end facebook login */
+
 
   console.log('Routes Loaded');
   fn();

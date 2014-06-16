@@ -49,3 +49,23 @@ block content
                 a.btn.btn-primary(href='/unlink/facebook') Unlink
             else
               a.btn.btn-primary(href='/connect/facebook') Connect Facebook
+        //TWITTER INFORMATION
+        .col-sm-4
+          .well
+            h3.text-info
+              span.fa.fa-twitter
+              | &nbsp Twitter
+            if(user.twitter.token)
+              p
+                strong ID
+                | : #{user.twitter.id}
+              p
+                strong Name
+                | : #{user.twitter.displayName}
+              p
+                strong Email
+                | : #{user.twitter.username}
+              p
+                a.btn.btn-info(href='/unlink/twitter') Unlink
+            else
+              a.btn.btn-info(href='/connect/twitter') Connect Twitter
