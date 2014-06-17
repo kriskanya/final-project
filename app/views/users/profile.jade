@@ -12,7 +12,7 @@ block content
         a.btn.btn-default.btn-sm(href='/logout') Logout
       .row
         // LOCAL INFORMATION
-        .col-sm-4
+        .col-sm-6
           .well
             h3
               span.fa.fa-user
@@ -23,14 +23,14 @@ block content
                 | : #{user.local.email}
               p
                 strong Password
-                | : &#9679 &#9679 &#9679 &#9679 &nbsp
+                | : #{user.local.password}
                 a.btn.btn-default.btn-sm(href='/users/password') Change Password
               p
                 a.btn.btn-default(href='/unlink/local') Unlink
             else
               a.btn.btn-default(href='/connect/local') Connect Local
         //FACEBOOK INFORMATION
-        .col-sm-4
+        .col-sm-6
           .well
             h3.text-info
               span.fa.fa-facebook
@@ -50,7 +50,7 @@ block content
             else
               a.btn.btn-primary(href='/connect/facebook') Connect Facebook
         //TWITTER INFORMATION
-        .col-sm-4
+        .col-sm-6
           .well
             h3.text-info
               span.fa.fa-twitter
