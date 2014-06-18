@@ -16,7 +16,7 @@ module.exports = (req, res, next)=>{
 function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
   var admin = traceur.require(__dirname + '/../routes/admin.js');
-  var polling = traceur.require(__dirname + '/../routes/polling.js');
+  var polls = traceur.require(__dirname + '/../routes/polls.js');
   var passport = require('passport');
   require('../config/passport')(passport);
 
@@ -202,8 +202,11 @@ function load(app, fn){
     /*------My Routes------*/
 
     app.get('/polling/new', dbg, admin.new);
+
     app.post('/polling', dbg, admin.create);
-    app.get('/polling', dbg, polling.index);
+    app.get('/polling', dbg, polls.index);
+
+
 
   console.log('Routes Loaded');
   fn();

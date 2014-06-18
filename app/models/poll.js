@@ -1,4 +1,6 @@
 var pollCollection = global.nss.db.collection('polls');
+var traceur = require('traceur');
+var Base = traceur.require(__dirname + '/base.js');
 
 class Poll{
   constructor(obj){
@@ -18,6 +20,12 @@ class Poll{
     temp.date = new Date();
     var poll = new Poll(temp);
     pollCollection.save(poll, ()=>fn(poll));
+  }
+
+  static findAllPolls(fn){
+    Base.findAll(pollCollection, Poll, allPolls=>{
+      fn(allPolls);
+    });
   }
 }
 

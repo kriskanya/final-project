@@ -9,6 +9,7 @@ exports.new = (req, res)=>{
 
 exports.create = (req, res)=>{
   Poll.create(req.body, poll=>{
-    res.redirect('/', {poll:poll});
+    console.log(poll);
+    res.redirect('/polling');
   });
 };

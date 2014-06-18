@@ -4,11 +4,9 @@ block content
   h1= title
 
   #checkboxes
-    .checkbox
-      label
-        input(type='checkbox', value='')
-        | Option 1
-    .checkbox
-      label
-        input(type='checkbox', value='')
-        | Option 2
+    h3= polls[(polls.length)-1].question
+    each answer, i in polls[(polls.length)-1].answers
+      .checkbox
+        label
+          input(type='checkbox', value='')
+          | #{answer}
