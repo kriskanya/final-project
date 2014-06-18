@@ -10,11 +10,19 @@
   function submitResponse(){
     var myArray = [];
     $(':checkbox:checked').each(function(){
-      var value = $(this).attr('data');
+      var value = $(this).attr('data');  //pushes the answers the user selected into the array
       myArray.push(value);
     });
-    console.log('user response-------');
-    console.log(myArray);
+    
+    $.ajax({
+      url: `/polling/${userId}/answer`,
+      type: 'post',
+      data: {answers: myArray},
+      dataType: 'JSON',
+      success: response=>{
+        console.log(response);
+    }});
+
   }
 
 })();

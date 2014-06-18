@@ -206,6 +206,8 @@ function load(app, fn){
     app.post('/polling', dbg, admin.create);
     app.get('/polling', dbg, polls.index);
 
+    app.post('polling/:userId/answer', dbg, polls.createAnswer);
+
 
 
   console.log('Routes Loaded');
