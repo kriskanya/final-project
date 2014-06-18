@@ -51,6 +51,7 @@ module.exports = function(passport) {
     },
     function(req, email, password, done) {
 
+      if(!req.user){
         // asynchronous
         // User.findOne wont fire unless data is sent back
         process.nextTick(function() {
@@ -83,13 +84,37 @@ module.exports = function(passport) {
                     }
                     return done(null, newUser);
                 });
-            }
+              }
+            });
+          });
 
+        } else {
+      process.nextTick(function(){
+        User.findByEmail(email, function(err, user){
+
+          if(err){
+            return done(err);
+          }
+
+          if(user){
+            return done(null, false, req.flash('registerMessage', 'That email is already taken.'));
+          } else {
+            var existingUser = req.user; // pull the user out of the session
+
+            existingUser.local.email = email;
+            existingUser.local.password = existingUser.generateHash(password);
+
+            existingUser.save(function(err){
+              if(err){
+                throw err;
+              }
+              return done(null, existingUser);
+            });
+          }
         });
-
-        });
-
-    }));
+      });
+    }
+  }));
 
 
   // =========================================================================
@@ -289,6 +314,7 @@ module.exports = function(passport) {
 	            user.save(function(err) {
 	                if (err){
                     throw err;
+
                   }
 	                return done(null, user);
 	            });

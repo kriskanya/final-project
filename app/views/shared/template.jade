@@ -6,15 +6,31 @@ html
     link(href='/less/app.css', rel='stylesheet')
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+    link(href='http://fonts.googleapis.com/css?family=Arvo', rel='stylesheet', type='text/css')
     style
       body { padding-top:80px; word-wrap:break-word; }
   body
+    #nav
+      nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container-fluid
+          .navbar-header
+            a.navbar-brand.polliticFont(href='/') Pollitic
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/search') Sign In
+            li
+              a(href='/chat') Search
+            li
+              a(href='/logout') Logout
+    #bufferDiv
+
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
     script(src='/js/vendor/lodash-2.4.1.js')
     script(src='/js/vendor/moment-2.6.0.js')
     script(src='/js/vendor/traceur.js')
+    script(src='/js/vendor/pixfree.js')
     script(src='/socket.io/socket.io.js')
     script(src='/js/es5/main.js')
     script(src='/js/es6/compiled/main.js')

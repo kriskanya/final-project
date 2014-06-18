@@ -1,0 +1,14 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  form#newPoll(action='/polling', method='post')
+    input(type='text', name = 'pollTitle', placeholder='Poll Title')
+    textarea(class='text', name='question', rows='5', cols='60', placeholder='Poll')
+    input(type='text', name = 'tags', placeholder='Tags')
+    input(type='text', name = 'answers', placeholder='Option 1')
+    input(type='text', name = 'answers', placeholder='Option 2')
+    input(type='text', name = 'answers', placeholder='Option 3')
+    input(type='text', name = 'answers', placeholder='Option 4')
+    button Save Poll
