@@ -4,9 +4,9 @@ block content
   h1= title
 
   #checkboxes
-    h3= polls[(polls.length)-1].question
-    each answer, i in polls[(polls.length)-1].answers
+    h3= poll.question
+    each answer in answers
       .checkbox
-        label
-          input(type='checkbox', value='')
-          | #{answer}
+        input(type='checkbox', data='#{answer}')
+        | #{answer}
+    button#submitResponse Submit
