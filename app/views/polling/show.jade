@@ -2,8 +2,10 @@ extends ../shared/template
 
 block content
   h1= title
-  input#pollData(type='hidden', data='#{poll}')
+  h2= poll.title
   #chartdiv
 
 block scripts
+  script.
+    var poll = !{JSON.stringify(poll)}
   script(src='/js/es6/compiled/chart.js')

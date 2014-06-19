@@ -31,10 +31,10 @@ exports.index = (req, res)=>{
 
 exports.show = (req, res)=>{
   Poll.findById(req.params.pollId, poll=>{
-    console.log('req.params...');
-    console.log(req.params);
-    var currentPoll = poll;
-    var userAnswers = poll.userAnswers.answers;
-    res.render('polling/show', {poll: currentPoll, userAnswers: userAnswers, title: 'Poll Show Page'});
+    // Answer.findAnswersByPollId(poll._id, answers=>{
+    console.log('polll------');
+    console.log(poll);
+      res.render('polling/show', {poll:poll, title: 'Poll Show Page'});
+    // });
   });
 };

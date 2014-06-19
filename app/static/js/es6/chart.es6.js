@@ -1,4 +1,4 @@
-/* global AmCharts */
+/* global AmCharts, poll */
 /* jshint unused:false */
 
 (function(){
@@ -11,41 +11,68 @@
   }
 
   function ajaxRequest(){
-    // var pollId = $('#pId').attr('data');
-    // console.log('poll idddd----');
-    // console.log(pollId);
+    console.log('poll');
+    console.log(poll.answers);
 
-    var myArray = [];
-    $('#pollData').each(function(){
-      var value = $(this).attr('data');
-      myArray.push(value);
-    });
+    console.log('log');
+    // console.log(answers[0].answers);
 
-    console.log('user answerres......');
-    console.log(myArray);
+    // var array = [];
+    // array = answers.map(a=>array.push(a.answers));
+    // console.log(array);
 
-    // $.ajax({url: '/polling/${pollId}/show',
-    // type: 'get',
-    // dataType: 'JSON',
-    // data: {pollId:pollId},
-    // // {pollId: pollId}
-    // success: response=>{
-    //   console.log(response);
-    //   makeChart(response);
-    // }});
+    // var array = [];
+    // var object = {};
+    //
+    // for(var i = 0; i <= answers.length; i++){
+    //   array.push(`{answers: ${poll.answers[i]}}`);
+    // }
+    //
+    // console.log(array);
+
+    // Object {asdgf: 2, sdfg: 2, sdrg: 1, dgfdsf: 1}
+
+    // var object = {};
+
+    console.log('where the loop starts');
+
+    console.log(poll.answers.asdgf);
+
+
+    // {answer: , count: }
+    var data = [];
+    for(var i=0;i<Object.keys(poll.answers).length;i++){
+      var key = Object.keys(poll.answers)[i];  //grabbing the i'th key in poll.answers
+
+      data.push({answer: key, count: poll.answers[key]});  //look up poll.answers based on the key, we need to use bracket syntax, as that's the only way we can use a variable
+    }
+    console.log(data);
+
+    makeChart(data);
   }
+  //
+  // [{
+  //     'answer': 'The answer here',
+  //     'count': 7252
+  // }, {
+  //     'answer': 'China',
+  //     'count': 3882
+  // }, {
+  //     'answer': 'Japan',
+  //     'count': 1809
+  // }]
 
-  function makeChart(response){
+  function makeChart(data){
     AmCharts.makeChart('chartdiv', {  //#chartdiv
     'type': 'pie',
-      'theme': 'none',
+    	'theme': 'none',
         'titles': [{
-            'text': 'Visitors countries',
+            'text': 'Question Answer',
             'size': 16
         }],
-        'dataProvider': response,  //response from ajax
-        'valueField': 'visits',  //values
-        'titleField': 'country',
+        'dataProvider': data,
+        'valueField': 'count',
+        'titleField': 'answer',
         'startEffect': 'elastic',
         'startDuration': 2,
         'labelRadius': 15,
@@ -58,7 +85,7 @@
           icon: '/lib/3/images/export.png',
           format: 'png'
           }]
-      }
+    	}
     });
   }
 

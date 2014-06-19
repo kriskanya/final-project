@@ -9,7 +9,7 @@ class Poll{
     this.title = obj.title;
     this.tags = obj.tags;
     this.question = obj.question;
-    this.answers = obj.answers;
+    this.answers = obj.answers;  //this is the admin's answers
     this.date = obj.date;
   }
 
@@ -18,7 +18,12 @@ class Poll{
     temp.title = obj.pollTitle;
     temp.tags = obj.tags;
     temp.question = obj.question;
-    temp.answers = obj.answers;
+
+    temp.answers = {};
+    for(var i=0;i<obj.answers.length;i++){
+      temp.answers[obj.answers[i]] = 0;
+    }
+
     temp.date = new Date();
     var poll = new Poll(temp);
     pollCollection.save(poll, ()=>fn(poll));
@@ -34,6 +39,26 @@ class Poll{
     Base.findById(id, pollCollection, Poll, fn);
   }
 
+  addResponse(input, fn){
+    //input is an array
+    console.log('input-----');
+    console.log(input);
+    console.log(this);
+
+    for(var i = 0; i < input.length; i++){
+      this.answers[input[i]]++;
+    }
+    console.log('thisss');
+    console.log(this);
+    pollCollection.save(this, ()=>fn(this));
+  }
+
+  // instace method addResponse(answers){
+  //   for(var i=0;i<answers.length;i++){
+  //       this.answers.answers[i]++
+  // }
+  // this.save()
+  // })
   save(fn){
     pollCollection.save(this, ()=>{
       fn();
