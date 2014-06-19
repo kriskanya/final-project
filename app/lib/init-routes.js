@@ -17,6 +17,7 @@ function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
   var admin = traceur.require(__dirname + '/../routes/admin.js');
   var polls = traceur.require(__dirname + '/../routes/polls.js');
+  var answers = traceur.require(__dirname + '/../routes/answers.js');
   var passport = require('passport');
   require('../config/passport')(passport);
 
@@ -206,7 +207,8 @@ function load(app, fn){
     app.post('/polling', dbg, admin.create);
     app.get('/polling', dbg, polls.index);
 
-    app.post('polling/:userId/answer', dbg, polls.createAnswer);
+    app.post('/polling/answer', dbg, answers.createAnswer);
+    app.get('/polling/:pollId/show', dbg, polls.show);
 
 
 

@@ -1,3 +1,5 @@
+/* jshint unused:false */
+
 (function(){
   'use strict';
 
@@ -13,16 +15,18 @@
       var value = $(this).attr('data');  //pushes the answers the user selected into the array
       myArray.push(value);
     });
-    
-    $.ajax({
-      url: `/polling/${userId}/answer`,
-      type: 'post',
-      data: {answers: myArray},
-      dataType: 'JSON',
-      success: response=>{
-        console.log(response);
-    }});
 
+    var pollId = $('#pId').attr('data');
+
+    $.ajax({
+      url: '/polling/answer',
+      type: 'post',
+      dataType: 'JSON',
+      data: {answers: myArray, pollId: pollId},
+      success: response=>{
+        //you cannot 'redirect' from an ajax call (in the route), so you must do it in the browser-code
+        window.location = `/polling/${pollId}/show`;
+    }});
   }
 
 })();

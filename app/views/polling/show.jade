@@ -1,0 +1,9 @@
+extends ../shared/template
+
+block content
+  h1= title
+  input#pollData(type='hidden', data='#{poll}')
+  #chartdiv
+
+block scripts
+  script(src='/js/es6/compiled/chart.js')

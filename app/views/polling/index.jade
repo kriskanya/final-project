@@ -5,6 +5,7 @@ block content
 
   #checkboxes
     h3= poll.question
+    input#pId(type='hidden', data='#{poll._id}')
     each answer in answers
       .checkbox
         input(type='checkbox', data='#{answer}')

@@ -1,3 +1,5 @@
+/* jshint unused:false */
+
 var pollCollection = global.nss.db.collection('polls');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
@@ -25,6 +27,16 @@ class Poll{
   static findAllPolls(fn){
     Base.findAll(pollCollection, Poll, allPolls=>{
       fn(allPolls);
+    });
+  }
+
+  static findById(id, fn){
+    Base.findById(id, pollCollection, Poll, fn);
+  }
+
+  save(fn){
+    pollCollection.save(this, ()=>{
+      fn();
     });
   }
 }
