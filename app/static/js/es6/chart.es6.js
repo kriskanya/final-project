@@ -7,72 +7,36 @@
   $(document).ready(init);
 
   function init(){
-    ajaxRequest();
+    makeDataForChart();
   }
 
-  function ajaxRequest(){
-    console.log('poll');
-    console.log(poll.answers);
-
-    console.log('log');
-    // console.log(answers[0].answers);
-
-    // var array = [];
-    // array = answers.map(a=>array.push(a.answers));
-    // console.log(array);
-
-    // var array = [];
-    // var object = {};
-    //
-    // for(var i = 0; i <= answers.length; i++){
-    //   array.push(`{answers: ${poll.answers[i]}}`);
-    // }
-    //
-    // console.log(array);
-
-    // Object {asdgf: 2, sdfg: 2, sdrg: 1, dgfdsf: 1}
-
-    // var object = {};
-
-    console.log('where the loop starts');
-
-    console.log(poll.answers.asdgf);
-
-
-    // {answer: , count: }
+  function makeDataForChart(){
     var data = [];
-    for(var i=0;i<Object.keys(poll.answers).length;i++){
+    for(var i = 0; i < Object.keys(poll.answers).length ; i++){
       var key = Object.keys(poll.answers)[i];  //grabbing the i'th key in poll.answers
-
       data.push({answer: key, count: poll.answers[key]});  //look up poll.answers based on the key, we need to use bracket syntax, as that's the only way we can use a variable
     }
-    console.log(data);
 
-    makeChart(data);
+    makeChart(data);    //now that we have the data, use it to create a chart
+    /* poll object looks like this:
+      [{
+        "answer": "blue",
+        "count": 7252
+      }]
+    */
   }
-  //
-  // [{
-  //     'answer': 'The answer here',
-  //     'count': 7252
-  // }, {
-  //     'answer': 'China',
-  //     'count': 3882
-  // }, {
-  //     'answer': 'Japan',
-  //     'count': 1809
-  // }]
 
   function makeChart(data){
     AmCharts.makeChart('chartdiv', {  //#chartdiv
     'type': 'pie',
     	'theme': 'none',
         'titles': [{
-            'text': 'Question Answer',
+            'text': `${poll.title}`,
             'size': 16
         }],
         'dataProvider': data,
-        'valueField': 'count',
-        'titleField': 'answer',
+        'valueField': 'count',   //
+        'titleField': 'answer',  //
         'startEffect': 'elastic',
         'startDuration': 2,
         'labelRadius': 15,
