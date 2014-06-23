@@ -1,9 +1,12 @@
 extends ../shared/template
 
 block content
-  h1= title
-  h2= poll.title
-  #chartdiv
+  #showPageBG
+    #showPageDiv
+      .well
+        h2= poll.title
+        #chartdiv
+        a(href='/polling') Go Back
 
 block scripts
   script.

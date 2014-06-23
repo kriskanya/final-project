@@ -1,14 +1,38 @@
 extends ../shared/template
 
 block content
-  h1= title
-
-  form#newPoll(action='/polling', method='post')
-    input(type='text', name = 'pollTitle', placeholder='Poll Title')
-    textarea(class='text', name='question', rows='5', cols='60', placeholder='Poll')
-    input(type='text', name = 'tags', placeholder='Tags')
-    input(type='text', name = 'answers', placeholder='Option 1')
-    input(type='text', name = 'answers', placeholder='Option 2')
-    input(type='text', name = 'answers', placeholder='Option 3')
-    input(type='text', name = 'answers', placeholder='Option 4')
-    button Save Poll
+  #newPollBG
+    #newPollDiv
+      h1.polliticFont= title
+      .well
+        form.form-horizontal#newPoll(action='/polling', method='post')
+          fieldset
+            .form-group
+              label.col-sm-2.control-label Poll Title
+              .col-sm-4
+                input.streetName.form-control(type='text', name='pollTitle', placeholder='Poll Title')
+            .form-group
+              label.col-sm-2.control-label(for='textinput') Poll Body
+              .col-sm-6
+                textarea.desc.form-control(type='text', name='question', placeholder='Write the question here')
+            .form-group
+              label.col-sm-2.control-label Tags
+              .col-sm-4
+                input.streetName.form-control(type='text', name='tags', placeholder='Tags')
+            .form-group
+              label.col-sm-2.control-label Option 1
+              .col-sm-4
+                input.streetName.form-control(type='text', name='answers', placeholder='Option 1')
+            .form-group
+              label.col-sm-2.control-label Option 2
+              .col-sm-4
+                input.streetName.form-control(type='text', name='answers', placeholder='Option 2')
+            .form-group
+              label.col-sm-2.control-label Option 3
+              .col-sm-4
+                input.streetName.form-control(type='text', name='answers', placeholder='Option 3')
+            .form-group
+              label.col-sm-2.control-label Option 4
+              .col-sm-4
+                input.streetName.form-control(type='text', name='answers', placeholder='Option 4')
+              button Save Poll

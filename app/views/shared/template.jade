@@ -10,19 +10,18 @@ html
     style
       body { padding-top:80px; word-wrap:break-word; }
   body
-    #nav
-      nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-        .container-fluid
-          .navbar-header
-            a.navbar-brand.polliticFont(href='/') Pollitic
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/search') Sign In
-            li
-              a(href='/chat') Search
-            li
-              a(href='/logout') Logout
-    #bufferDiv
+    .nav
+      .container
+        ul.pull-left
+          li
+            a(href='/') Pollitic
+        ul.pull-right
+          li
+            a(href='#') Sign Up
+          li
+            a(href='#') Log In
+          li
+            a(href='/logout') Logout
 
     block content
 

@@ -210,7 +210,7 @@ function load(app, fn){
     app.post('/polling/answer', dbg, answers.createAnswer);
     app.get('/polling/:pollId/show', dbg, polls.show);
 
-
+    app.get('/home/newIndex', dbg, home.newIndex);
 
   console.log('Routes Loaded');
   fn();

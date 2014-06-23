@@ -1,13 +1,20 @@
 extends ../shared/template
 
 block content
-  h1= title
 
-  #checkboxes
-    h3= poll.question
-    input#pId(type='hidden', data='#{poll._id}')
-    each val, key in answers
-      .checkbox
-        input(type='checkbox', data='#{key}')
-        | #{key}
-    button#submitResponse Submit
+  #submitPollBG
+    #submitPollDiv
+      .col-lg-6
+        h1.polliticFont= title
+        .well.col-sm-8
+          #checkboxes
+            h3= poll.question
+            input#pId(type='hidden', data='#{poll._id}')
+            each val, key in answers
+              .checkbox
+                input(type='checkbox', data='#{key}')
+                | #{key}
+            button#submitResponse Submit
+      .col.lg-6#twitter
+        h2 Twitter stuff
+        p writing some more stuffdsfkjalsdfjladfjkfa
