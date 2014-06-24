@@ -17,13 +17,17 @@ html
             a(href='/') Pollitic
         ul.pull-right
           li
-            a(href='#') Sign Up/Log In
+            a(href='/home/newIndex') Sign Up/Log In
           li
             a(href='/polling') Polling
           li
             a(href='/profile') Profile
           li
             a(href='/logout') Logout
+          if(user)
+            if(user.facebook.email==='kriskanya@hotmail.com'||user.twitter.username==='kriskanya')
+              li
+                a(href='/polling/new') Admin
 
     block content
 

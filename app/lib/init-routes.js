@@ -202,6 +202,8 @@ function load(app, fn){
 
     /*------My Routes------*/
 
+    app.all('*', dbg, home.lookup);
+
     app.get('/polling/new', dbg, admin.new);
 
     app.post('/polling', dbg, admin.create);
