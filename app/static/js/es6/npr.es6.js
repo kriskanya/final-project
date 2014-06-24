@@ -13,11 +13,8 @@
 
   function callNPRSearch(){
 
-    console.log(poll);
-    console.log('taggg');
     var tag = poll.tags.split(',');
     tag = tag[0].trim();
-    console.log(tag);
 
     $.ajax({url: `http://api.npr.org/query?searchTerm=${tag}&apiKey=MDA4NDgxNjc1MDEzMjEzMDM3MDQ1N2IzYg001&output=JSON`,
       type: 'get',
