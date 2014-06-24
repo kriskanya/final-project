@@ -9,7 +9,7 @@ exports.index = (req, res)=>{
     var mostRecentPoll = polls[(polls.length)-1];
     var mostRecentAnswers = mostRecentPoll.answers;
     var userId = req.user._id;
-    res.render('polling/index', {userId: userId, polls:polls, poll: mostRecentPoll, answers: mostRecentAnswers, title: 'Polling Home'});
+    res.render('polling/index', {userId: userId, polls:polls, poll: mostRecentPoll, answers: mostRecentAnswers, title: 'Polling Home: Poll of the Day'});
   });
 };
 

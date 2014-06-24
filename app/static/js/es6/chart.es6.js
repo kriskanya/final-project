@@ -12,7 +12,7 @@
 
   function makeDataForChart(){
     var data = [];
-    for(var i = 0; i < Object.keys(poll.answers).length ; i++){
+    for(var i = 0; i < Object.keys(poll.answers).length; i++){
       var key = Object.keys(poll.answers)[i];  //grabbing the i'th key in poll.answers
       data.push({answer: key, count: poll.answers[key]});  //look up poll.answers based on the key, we need to use bracket syntax, as that's the only way we can use a variable
     }

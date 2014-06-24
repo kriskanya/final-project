@@ -4,17 +4,27 @@ block content
 
   #submitPollBG
     #submitPollDiv
-      .col-lg-6
-        h1.polliticFont= title
-        .well.col-sm-8
-          #checkboxes
-            h3= poll.question
-            input#pId(type='hidden', data='#{poll._id}')
-            each val, key in answers
-              .checkbox
-                input(type='checkbox', data='#{key}')
-                | #{key}
-            button#submitResponse Submit
-      .col.lg-6#twitter
-        h2 Twitter stuff
-        p writing some more stuffdsfkjalsdfjladfjkfa
+      .row
+        .col-lg-1
+        .col-lg-5
+          h1.polliticFont#pollOfTheDay= title
+          .well.col-sm-8
+            #checkboxes
+              h3= poll.question
+              input#pId(type='hidden', data='#{poll._id}')
+              each val, key in answers
+                .checkbox
+                  input(type='checkbox', data='#{key}')
+                  | #{key}
+              button#submitResponse Submit
+        .col-lg-2
+        .col-lg-2#npr
+          h2 Related NPR Stories
+          .well
+            ul#nprStories
+        .col-lg-1
+
+block scripts
+  script.
+    var poll = !{JSON.stringify(poll)}
+  script(src='/js/es6/compiled/npr.js')
