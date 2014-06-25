@@ -204,15 +204,17 @@ function load(app, fn){
 
     app.all('*', dbg, home.lookup);
 
-    app.get('/polling/new', dbg, admin.new);
-
-    app.post('/polling', dbg, admin.create);
     app.get('/polling', dbg, polls.index);
 
     app.post('/polling/answer', dbg, answers.createAnswer);
     app.get('/polling/:pollId/show', dbg, polls.show);
 
     app.get('/home/newIndex', dbg, home.newIndex);
+
+    app.all('*', home.bounce);
+
+    app.get('/polling/new', dbg, admin.new);
+    app.post('/polling', dbg, admin.create);
 
   console.log('Routes Loaded');
   fn();

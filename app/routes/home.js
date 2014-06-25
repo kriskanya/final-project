@@ -16,3 +16,11 @@ exports.lookup = (req, res, next)=>{
 
     next();
 };
+
+exports.bounce = (req, res, next)=>{
+  if(res.locals.user){
+    next();
+  }else{
+    res.redirect('/');
+  }
+};

@@ -16,9 +16,8 @@ block content
                 .checkbox
                   input(type='checkbox', data='#{key}')
                   | #{key}
-              if(!answers.userId)
-                button#submitResponse Submit
-                a(href='/polling/#{poll._id}/show') See Results
+              button#submitResponse Submit
+              a(href='/polling/#{poll._id}/show') See Results
         .col-lg-1
         .col-lg-3#npr
           h2 Related NPR Stories
