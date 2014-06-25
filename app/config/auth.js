@@ -1,15 +1,21 @@
 // expose our config directly to our application using module.exports
+
+var facebook = process.env.FACEBOOKKEY;
+var fbSecret = process.env.FBSECRET;
+var twitter = process.env.TWITTERKEY;
+var twitterSecret = process.env.TWITTERSECRET;
+
 module.exports = {
 
 	'facebookAuth' : {
-		'clientID' 		: '249911675200296', // your App ID
-		'clientSecret' 	: 'dc940bfebf5ef4b17f8833bd3e54fa50', // your App Secret
+		'clientID' 		: facebook, // your App ID
+		'clientSecret' 	: fbSecret, // your App Secret
 		'callbackURL' 	: 'http://localhost:4000/auth/facebook/callback'
 	},
 
 	'twitterAuth' : {
-		'consumerKey' 		: 'sfnuo9STOBhvXFNl62Xaj0tUu',
-		'consumerSecret' 	: 'e1bEISOUsEdQyxmAyrqJsuqVFBJeVYvbluWp8b3EZ96P00z1QZ',
+		'consumerKey' 		: twitter,
+		'consumerSecret' 	: twitterSecret,
 		'callbackURL' 		: 'http://localhost:4000/auth/twitter/callback'
 	},
 
