@@ -1,26 +1,27 @@
 extends ../shared/template
 
 block content
-  h1= title
+  #loginBG
+    #loginDiv
+      .well
+        if(message)
+          .alert(style='color: red')
+            p= message
 
-  if(message)
-    .alert(style='color: red')
-      p= message
+        h1
+          span.fa.fa-sign-in Login
+        form(action='/login', method='post')
+          input(type='text', name='email', placeholder='Email')
+          br
+          input(type='password', name='password', placeholder='Password')
+          br
+          button(type='submit') Login
 
-  h1
-    span.fa.fa-sign-in Login
-  form(action='/login', method='post')
-    input(type='text', name='email', placeholder='Email')
-    br
-    input(type='password', name='password', placeholder='Password')
-    br
-    button(type='submit') Login
-
-    hr
-    p
-      | Need an account?
-      a(href='/signup') Signup
-    p
-      | Or go
-      a(href='/') home
-      | .
+          hr
+          p
+            | Need an account?&nbsp
+            a(href='/signup') Signup
+          p
+            | Or go&nbsp
+            a(href='/') home
+            | .
