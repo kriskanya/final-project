@@ -10,13 +10,15 @@ module.exports = {
 	'facebookAuth' : {
 		'clientID' 		: facebook, // your App ID
 		'clientSecret' 	: fbSecret, // your App Secret
-		'callbackURL' 	: 'http://localhost:4000/auth/facebook/callback'
+		'callbackURL' 	: 'http://pollitic.kristiankanya.com/auth/facebook/callback'
+		// 'callbackURL' 	: 'http://localhost:4000/auth/facebook/callback'
 	},
 
 	'twitterAuth' : {
 		'consumerKey' 		: twitter,
 		'consumerSecret' 	: twitterSecret,
-		'callbackURL' 		: 'http://localhost:4000/auth/twitter/callback'
+		'callbackURL' 		: 'http://pollitic.kristiankanya.com/auth/twitter/callback'
+		// 'callbackURL' 		: 'http://localhost:4000/auth/twitter/callback'
 	},
 
 	'googleAuth' : {
